@@ -1,0 +1,61 @@
+Step 1 - Getting started
+First review some files:
+Model 
+	- last semester we used assoc arrays to store model data
+	- All of our model objects will extend this class
+	- Note that the isValid() method is abstract.
+		- ? Why is it abstract?
+		- ? Can you instantiate an abstract class?
+		- ? What must you do in order to create an instance of an abstract class?
+	- Note that models can be converted to various formats
+		- ? If you don't like the way the Model class converts a model to JSON, what can you do?
+
+User
+	- Notice the param for the constructor, this is how we'll set the instance vars
+		- it's convenient because we get rows from the database as assoc arrays
+	- Note that it implements the isValid() method
+		- and populates the inherited $validationErrors array
+	- Note that you should validate the lenght of properties, otherwise they could get truncated when inserting/updating the database
+
+Look at the tests for User (I didn't test Model, instead put tests for it's methods in UserTest.php)
+
+Role and RoleTests
+	-Let's work together in class to get the Role tests to pass
+
+
+DataAccess
+	- All of our data access classes will extend it
+	- Notice that subclasses will inherit some useful methods
+		convertDateForMySQL()
+		sanitizeHTML()
+		handleError()
+	- Notice that all subclasses will have to implement getAll(), getById(), insert(), update(), delete()
+		This will ensure that all of our da objects have the same API
+
+DataAccessTests - just a quick look at it
+	- I had to create a subclass just to test the concrete (non abstract) methods
+
+UserDataAccess
+	- Notice how it works with User model objects (some methods return arrays of Users and takes a User as params)
+	- Understand how convertModelToRow() and convertRowToModel() work
+		They map model property names to columns in the users table and vice versa
+		They 'scrub' the data to prevent hacks (last semester this code was duplicated a lot in each data access class)
+	- Briefly look at the methods that interact with the database
+	- Note that there is some code regrading authentication and encrypting passwords that we may deal with later.
+
+UserDataAccessTests
+	- This one got complicated, and I'm still not sure of the best way to test components that interact with the database
+		- Although the tests are not clean with clean results,
+		- the point is to try out your methods before you plug them into an app
+	- Note that you should create a separate database for testing.
+		- create one called test_users
+		- set the $testPassword
+	- Note that I created the user_roles table along with the users table because the users table depends on the user_roles table
+	- Note that FK relationships can cause headaches!
+
+RoleDataAccess and RoleDataAccessTests
+	- Let's work together to see if we can get the RoleDataAccess class to work
+
+
+
+
