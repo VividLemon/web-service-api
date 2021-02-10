@@ -9,7 +9,7 @@ include_once("../includes/models/User.inc.php");
 // (note how I commented the FK info out below)
 
 // create a database called test_users
-$testDB = "Site"; // put the name of your test db here
+$testDB = "test_db"; // put the name of your test db here
 $testServer = "localhost";
 $testLogin = "root";
 $testPassword = "test"; // set the password 

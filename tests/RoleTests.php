@@ -141,7 +141,7 @@ function testIsValid(){
 		$testResults[] = "FAIL - isValid() DOES NOT return false when Description is too long";
 	}
 
-	if(isset($r->validationErrors['name'])){
+	if(isset($r->validationErrors['description'])){
 		$testResults[] = "PASS - validationErrors includes key for Description when Description is too long";
 	}else{
 		$testResults[] = "FAIL - validationErrors does NOT include key for Description when Description is too long";

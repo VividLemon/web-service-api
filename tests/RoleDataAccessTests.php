@@ -12,7 +12,7 @@ include_once("../includes/models/Role.inc.php");
 $testDB = "test_roles"; // put the name of your test db here
 $testServer = "localhost";
 $testLogin = "root";
-$testPassword = ""; // set the password 
+$testPassword = "test"; // set the password 
 $link = mysqli_connect($testServer, $testLogin, $testPassword, $testDB);
 
 if(!$link){
@@ -92,8 +92,8 @@ function testConvertModelToRow(){
 
 	$expectedResult = array(
 		'user_role_id' => 1,
-		'user_role_name' => "Bob",
-		'user_role_desc' => "Smith"
+		'user_role_name' => "Test Role",
+		'user_role_desc' => "This is a test role"
 	);
 	
 	$actualResult = $da->convertModelToRow($r);
